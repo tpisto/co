@@ -11,10 +11,13 @@ var toString = Object.prototype.toString;
 var slice = Array.prototype.slice;
 
 /**
- * setImmediate() with fallback to process.nextTick() for node v0.8.x.
+ * setImmediate() with fallback to process.nextTick() for node v0.8.x
+ * and setTimeout() for the browser.
  */
 
-var setImmediate = global.setImmediate || process.nextTick;
+var setImmediate = ('undefined' != typeof setImmediate && setImmediate)
+  || ('undefined' != typeof process && process.nextTick)
+  || function(done) { setTimeout(done, 0) };
 
 /**
  * Expose `co`.
