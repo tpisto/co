@@ -1,0 +1,22 @@
+{
+    "name": "co",
+    "version": "3.0.6",
+    "main": "co.js",
+    "ignore": [
+        "test",
+        "examples",
+        ".gitignore",
+        "travis.yml",
+        "benchmark.js",
+        "bower.json",
+        "component.json",
+        "History.md"
+        "index.js",
+        "Makefile",
+        "package.json",
+        "Readme.md"
+    ],
+    "dependencies": {
+        "setimmediate": ">=1.0.1",
+    }
+}
