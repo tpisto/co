@@ -17,6 +17,6 @@
         "Readme.md"
     ],
     "dependencies": {
-        "setimmediate": ">=1.0.1",
+        "setimmediate": ">=1.0.1"
     }
 }
