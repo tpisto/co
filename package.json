@@ -21,7 +21,7 @@
     "test": "make test"
   },
   "files": [
-    "index.js"
+    "co.js"
   ],
   "license": "MIT",
   "repository": {
