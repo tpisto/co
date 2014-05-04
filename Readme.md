@@ -356,7 +356,69 @@ co(function *(){
   while the same number of sequential stat()s with `co()` takes
   610ms, aka the overhead introduced by generators is _extremely_ negligable.
 
+## Using in browser
+### Installation
+```
+$ bower install co
+```
+If you don't have bower installed, you can get it from https://github.com/bower/bower
+### Usage example
+#### Works with latest FF and Chrome
+index.html
+```html
+<html>
+<head>
+  <script src="bower_components/setimmediate/setimmediate.js"></script>
+  <script src="bower_components/co/co.js"></script>
+  <script src="myScript.js"></script>
+ </head>
+ <body></body>
+ </html>
+```
+myScript.js
+```js
+function sleep(ms) {
+  return function (callback) {
+    // throw "error"
+    setTimeout(callback, ms);
+  };
+}
+
+co(function* () {
+  try {
+    console.log("Hello");
+    yield sleep(1000);
+    console.log("World");
+  } catch (e) {
+    console.log("Error: " + e);
+  }
+})();
+```
+#### Legacy browsers
+Install regenerator (https://github.com/facebook/regenerator)
+```
+npm install -g regenerator
+```
+Convert myScript.js
+```
+regenerator myScript.js > myLegacyScript.js
+```
+Install regenerator runtime
+```
+$ bower install regenerator
+```
+index.html compatible with older browsers
+```html
+<html>
+<head>
+  <script src="bower_components/setimmediate/setimmediate.js"></script>
+  <script src="bower_components/co/co.js"></script>
+  <script src="bower_components/regenerator/runtime/min.js"></script>
+  <script src="myLegacyScript.js"></script>
+ </head>
+ <body></body>
+ </html>
+```
 ## License
 
   MIT
-
